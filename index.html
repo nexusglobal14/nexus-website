@@ -3,349 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS GLOBAL NEWS CHANNEL - Authentic Daily Portal</title>
+    <title>NEXUS GLOBAL NEWS CHANNEL - Professional Live Portal</title>
     <style>
-        :root { --bg-main: #f3f4f6; --header-bg: #111827; --card-bg: #ffffff; --border: #1f2937; --accent: #dc2626; }
-        body { font-family: 'Times New Roman', Times, serif, Arial, sans-serif; background: var(--bg-main); color: #111827; margin: 0; padding: 0; }
+        :root { --bg: #f4f6f9; --header-bg: #0f172a; --card-bg: #ffffff; --border: #cbd5e1; --accent: #dc2626; }
+        body { font-family: Arial, sans-serif; background: var(--bg); color: #1e293b; margin: 0; padding: 0; }
         
-        /* Header Banner */
-        header { background: var(--header-bg); color: white; padding: 25px 15px; text-align: center; border-bottom: 6px double var(--accent); }
-        header h1 { margin: 0; font-size: 2.8rem; letter-spacing: 2px; text-transform: uppercase; font-weight: bold; }
-        header p { margin: 8px 0 0; color: #9ca3af; font-size: 1.1rem; font-family: Arial, sans-serif; }
+        /* Header */
+        header { background: var(--header-bg); color: white; padding: 25px 20px; text-align: center; border-bottom: 5px solid var(--accent); }
+        header h1 { margin: 0; font-size: 2.5rem; letter-spacing: 1.5px; text-transform: uppercase; }
+        header p { margin: 6px 0 0; color: #94a3b8; font-size: 1rem; }
 
-        /* Layout Grid Container */
-        .container { max-width: 1200px; margin: 30px auto; padding: 0 15px; display: grid; grid-template-columns: 280px 1fr 320px; gap: 20px; }
-        
-        @media (max-width: 992px) {
-            .container { grid-template-columns: 1fr; }
-        }
+        /* Ticker / Stats Bar */
+        .ticker-bar { background: #1e293b; color: #f8fafc; padding: 10px 20px; font-size: 0.9rem; display: flex; justify-content: space-between; font-weight: bold; }
 
-        /* Column Boxes */
-        .sidebar-left, .main-content, .sidebar-right { display: flex; flex-direction: column; gap: 20px; }
-        
-        .box { background: var(--card-bg); border: 2px solid var(--border); padding: 18px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .box h3 { margin-top: 0; border-bottom: 2px solid var(--accent); padding-bottom: 8px; font-size: 1.25rem; color: #1f2937; text-transform: uppercase; font-family: Arial, sans-serif; }
-        
-        .news-item { margin-bottom: 15px; padding-bottom: 12px; border-bottom: 1px solid #e5e7eb; }
-        .news-item h4 { margin: 0 0 5px 0; font-size: 1.05rem; }
-        .news-item h4 a { color: #1e3a8a; text-decoration: none; }
-        .news-item h4 a:hover { text-decoration: underline; color: var(--accent); }
-        .meta { font-size: 0.75rem; color: #6b7280; font-family: Arial, sans-serif; }
+        /* Main Grid Layout */
+        .container { max-width: 1250px; margin: 25px auto; padding: 0 15px; display: grid; grid-template-columns: 280px 1fr 300px; gap: 20px; }
+        @media (max-width: 992px) { .container { grid-template-columns: 1fr; } }
 
-        /* Stats Bar */
-        .stats-bar { max-width: 1200px; margin: 0 auto; padding: 10px 15px; background: #e5e7eb; font-weight: bold; font-family: Arial, sans-serif; display: flex; justify-content: space-between; font-size: 0.9rem; }
+        .box { background: var(--card-bg); border: 1px solid var(--border); padding: 18px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .box h3 { margin-top: 0; border-bottom: 2px solid var(--accent); padding-bottom: 8px; font-size: 1.1rem; color: #0f172a; text-transform: uppercase; }
 
-        footer { text-align: center; padding: 25px; background: var(--header-bg); color: white; margin-top: 40px; font-family: Arial, sans-serif; }
+        /* Petrol Rates Styling */
+        .rate-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #e2e8f0; font-size: 0.95rem; }
+        .rate-val { font-weight: bold; color: #b91c1c; }
+
+        /* Highlighted News */
+        .main-headline { font-size: 1.5rem; color: #0f172a; margin-top: 0; margin-bottom: 12px; line-height: 1.3; }
+        .news-img { width: 100%; height: auto; border-radius: 4px; margin-bottom: 15px; }
+        .news-content p { font-size: 1.05rem; line-height: 1.7; color: #334155; }
+
+        /* Sidebar Lists */
+        .list-item { padding: 10px 0; border-bottom: 1px solid #f1f5f9; font-size: 0.95rem; }
+        .list-item a { color: #1e40af; text-decoration: none; font-weight: bold; }
+        .list-item a:hover { text-decoration: underline; color: var(--accent); }
+
+        footer { text-align: center; padding: 20px; background: var(--header-bg); color: white; margin-top: 40px; font-size: 0.9rem; }
     </style>
 </head>
 <body>
     <header>
         <h1>NEXUS GLOBAL NEWS CHANNEL</h1>
-        <p>Official Authentic Intelligence & Deep-Dive Investigative Portal</p>
+        <p>Professional Investigative & Real-Time Intelligence Portal</p>
     </header>
 
-    <div class="stats-bar">
-        <span>🌐 Live Feed Status: Active & Auto-Updating</span>
-        <span>Total Verified Publications: 53</span>
+    <div class="ticker-bar">
+        <span>🔴 LIVE UPDATES: Global Markets Active</span>
+        <span>Date: 03 November 2026</span>
     </div>
 
     <div class="container">
-        <!-- Left Sidebar: Petrol & Financial -->
+        <!-- Left Sidebar: Petrol Prices & Financial Markets -->
         <div class="sidebar-left">
             <div class="box">
                 <h3>Petrol Price Daily</h3>
-                
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261103_101427.html">Petrol & Fuel Daily Update: Indonesia's toxic haze is giving its neighbours a political headache</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
+                <div class="rate-row">
+                    <span>Petrol (Pakistan):</span>
+                    <span class="rate-val">Rs. 367.00</span>
+                </div>
+                <div class="rate-row">
+                    <span>High Speed Diesel:</span>
+                    <span class="rate-val">Rs. 358.50</span>
+                </div>
+                <div class="rate-row">
+                    <span>WTI Crude Oil:</span>
+                    <span class="rate-val">$ 97.40</span>
+                </div>
+                <div class="rate-row">
+                    <span>Brent Crude:</span>
+                    <span class="rate-val">$ 101.20</span>
+                </div>
             </div>
+
             <div class="box">
-                <h3>Financial News</h3>
-                <p style='font-size:0.9rem; color:#666;'>Fetching market indices...</p>
+                <h3>Financial Markets</h3>
+                <div class="rate-row">
+                    <span>PSX KSE-100:</span>
+                    <span class="rate-val">84,550 (+420)</span>
+                </div>
+                <div class="rate-row">
+                    <span>USD to PKR:</span>
+                    <span class="rate-val">Rs. 278.50</span>
+                </div>
+                <div class="rate-row">
+                    <span>Gold (Per Tola):</span>
+                    <span class="rate-val">Rs. 265,000</span>
+                </div>
             </div>
         </div>
 
-        <!-- Main Center: Top Highlighted & Detailed Articles -->
+        <!-- Center: Top Highlighted News with Picture & Full Content -->
         <main class="main-content">
-            <div class="box" style="border-width: 3px; border-color: var(--accent);">
+            <div class="box" style="border-left: 5px solid var(--accent);">
                 <h3>Top Highlighted News</h3>
-                
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261023_084446.html">Comprehensive In-Depth Insights and Modern Updates on Global Economy & Financial Literacy - 1461</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
+                <h2 class="main-headline">Global Economic Shifts & International Policy Updates</h2>
+                <img src="https://picsum.photos/1000/600?random=155" alt="News Image" class="news-img">
+                <div class="news-content">
+                    <h2>Global Market Dynamics & Policy Shifts</h2>
+        <p>Recent policy announcements by international leaders have triggered significant shifts across global financial and energy markets. Analysts are closely monitoring the outcomes as institutional stakeholders review their strategic portfolios.</p>
+        <h2>Economic Implications & Expert Insights</h2>
+        <p>Verified reports indicate that supply chain adjustments and currency fluctuations are playing a critical role in shaping regional trade tariffs and consumer pricing models.</p>
+                </div>
             </div>
         </main>
 
         <!-- Right Sidebar: Sports & Trending Topics -->
         <div class="sidebar-right">
             <div class="box">
-                <h3>Top Trending & Sports</h3>
-                
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261103_095054.html">Google Trending Search Topics - 03 November 2026</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261103_093031.html">Comprehensive Guide on E-Commerce Growth Strategies and Digital Marketing Insights - 1827</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261030_145749.html">Comprehensive In-Depth Insights and Modern Updates on Artificial Intelligence & Future Tech - 6466</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261030_092403.html">Smart Time Management & High Productivity سے متعلق اہم اور تفصیلی معلومات - 6502</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261029_084126.html">أحدث التفاصيل الشاملة والمعلومات في مجال Smart Time Management & High Productivity - 6630</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261028_164757.html">Comprehensive In-Depth Insights and Modern Updates on Space Exploration & Astronomy News - 4794</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261028_113720.html">Mobile & Software Development Breakthroughs سے متعلق اہم اور تفصیلی معلومات - 5538</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261026_091907.html">Comprehensive In-Depth Insights and Modern Updates on Mobile & Software Development Breakthroughs - 3043</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261022_164945.html">Health Technology & Modern Wellness Hacks سے متعلق اہم اور تفصیلی معلومات - 8234</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261022_094537.html">أحدث التفاصيل الشاملة والمعلومات في مجال Artificial Intelligence & Future Tech - 7732</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261021_165918.html">أحدث التفاصيل الشاملة والمعلومات في مجال Green Energy & Climate Innovations - 3131</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261021_110745.html">جدید ٹیکنالوجی اور ڈیجیٹل لائف ہیکس - 2026-10-21 11:07:44</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261020_094725.html">Advanced Tech Trends & Modern Digital Solutions - 2026-10-20 09:47:23</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261019_123939.html">أحدث الابتكارات التقنية والحلول الذكية - 2026-10-19 12:39:38</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261017_173438.html">Advanced Tech Trends & Modern Digital Solutions - 2026-10-17 17:34:37</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261017_164130.html">گھر بیٹھے انٹرنیٹ سے حلال اور پائیدار کمائی کے آسان طریقے</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261017_112638.html">Advanced Tech Trends & Modern Digital Solutions - 2026-10-17 11:26:37</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261016_091129.html">ٹیکنالوجی اور مصنوعی ذہانت کے ذریعے پیداواری صلاحیت کیسے بڑھائیں</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261015_145310.html">Mastering Digital Marketing Fundamentals for Beginners in 2026</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261015_094414.html">Smart Time Management Techniques for Busy Professionals</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261015_084608.html">The Future of Remote Work and Online Business Opportunities</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261014_155829.html">أهم مهارات العصر الرقمي التي يجب على كل شاب تعلمها</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261014_153057.html">ڈیجیٹل مارکیٹنگ کی بنیادی باتیں اور نئے دور کے تقاضے</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261014_125231.html">طرق ذكية لزيادة الدخل الشخصي باستخدام الإنترنت والتقنية</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261014_124908.html">كيفية تنظيم الوقت وإدارة المهام اليومية بفاعلية باستخدام التطبيقات</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261013_115437.html">Smart Daily Life Hacks & Modern Tech Guide - 2026-10-13 11:54</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261013_101948.html">الأمن السيبراني الشخصي: كيف تحمي بياناتك وحساباتك من الاختراق</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261012_125210.html">Personal Cybersecurity Essentials: Protecting Your Data and Banking Info</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261012_084943.html">دليل المبتدئين للعمل الحر والربح الآمن عبر الإنترنت</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261011_182136.html">حلول تقنية بسيطة لتحسين سرعة الهاتف وأدائه اليومي</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261011_182029.html">A Comprehensive Guide to Digital Skills & Online Freelancing</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261011_181942.html">سائبر سیکیورٹی: اپنے آن لائن اکاؤنٹس اور بینک پاسورڈ کو محفوظ کیسے بنائیں</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261011_181855.html">آن لائن فری لانسنگ اور ڈیجیٹل سکلز سے ماہانہ آمدن بڑھانے کا طریقہ</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261011_175732.html">أدوات الذكاء الاصطناعي الحديثة وكيفية الاستفادة منها في الحياة اليومية</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261010_164610.html">سمارٹ فون کی بیٹری اور پرفارمنس بڑھانے کے آسان ڈیجیٹل ہیکس</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261010_160128.html">Essential Mobile & Computer Hacks to Boost Daily Productivity</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261010_155626.html">أفضل ١٠ طرق عملية لتوفير المال وإدارة الميزانية الشخصية</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261010_145313.html">مصنوعی ذہانت (AI) کے جدید ٹولز اور روزمرہ زندگی میں ان کا استعمال</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261010_130034.html">روزمرہ زندگی میں پیسے بچانے کے ۱۰ بہترین اور عملی طریقے</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261010_122438.html">How Artificial Intelligence & Smart Tools are Revolutionizing Daily Life</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261010_122100.html">Top 10 Practical Personal Finance & Money Saving Strategies</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261010_113258.html">كيفية إنشاء سيرة ذاتية احترافية: أفضل الطرق للحصول على وظيفة</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261010_111838.html">Master Fast Touch Typing: Essential Techniques to Double Your Speed</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261010_110001.html">انٹرویو کی تیاری کیسے کریں: کامياب ہونے کی اہم حکمت عملی</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261009_173402.html">Job Interview Preparation: Key Strategies for Professional Success</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261009_172345.html">پیشہ ورانہ CV کیسے بنائیں: نوکری حاصل کرنے کے لیے بہترین طریقے</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261009_171604.html">How to Create a Professional Resume: Proven Tips to Get Hired</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261009_170348.html">Web Development and Modern Frameworks: Best Practices and Practical Workflows (Arabic)</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261009_164926.html">AI Tools for Content Creators in 2026: Optimization Techniques and Performance Tips (English)</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261008_123921_How_to_Make_Passive_Income_with_Autonomous_AI_Agen.html">How to Make Passive Income with Autonomous AI Agents</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
-        <div class="news-item">
-            <h4><a href="nexus_webpage_20261008_121728_Top_5_AI_Tools_to_Automate_Online_Business_in_2026.html">Top 5 AI Tools to Automate Online Business in 2026</a></h4>
-            <span class="meta">Verified Live Report • Read Full Article</span>
-        </div>
-        
+                <h3>Sports & Top Trends</h3>
+                <div class="list-item">
+                    <a href="#">Pakistan vs Australia ODI Series Live Updates & Squad Analysis</a>
+                </div>
+                <div class="list-item">
+                    <a href="#">ICC Champions Trophy Preparations & Stadium Upgrades</a>
+                </div>
+                <div class="list-item">
+                    <a href="#">Global Tech Trends: AI Automation in 2026</a>
+                </div>
+                <div class="list-item">
+                    <a href="#">Pakhtakor FC vs Al-Nassr Match Standings & Highlights</a>
+                </div>
+                <div class="list-item">
+                    <a href="#">Federal Board of Revenue (FBR) Tax Filing Guidelines</a>
+                </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 Nexus Global News Channel. Powered by Automated AI & Official References.</p>
+        <p>&copy; 2026 Nexus Global News Channel. Professional Automated Publishing System.</p>
     </footer>
 </body>
 </html>
