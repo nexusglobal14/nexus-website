@@ -3,134 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS GLOBAL NEWS CHANNEL - Professional Live Portal</title>
+    <title>NEXUS GLOBAL NEWS CHANNEL - Live Portal</title>
     <style>
         :root { --bg: #f4f6f9; --header-bg: #0f172a; --card-bg: #ffffff; --border: #cbd5e1; --accent: #dc2626; }
-        body { font-family: Arial, sans-serif; background: var(--bg); color: #1e293b; margin: 0; padding: 0; }
-        
-        /* Header */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: #1e293b; margin: 0; padding: 0; }
         header { background: var(--header-bg); color: white; padding: 25px 20px; text-align: center; border-bottom: 5px solid var(--accent); }
         header h1 { margin: 0; font-size: 2.5rem; letter-spacing: 1.5px; text-transform: uppercase; }
         header p { margin: 6px 0 0; color: #94a3b8; font-size: 1rem; }
-
-        /* Ticker / Stats Bar */
         .ticker-bar { background: #1e293b; color: #f8fafc; padding: 10px 20px; font-size: 0.9rem; display: flex; justify-content: space-between; font-weight: bold; }
-
-        /* Main Grid Layout */
-        .container { max-width: 1250px; margin: 25px auto; padding: 0 15px; display: grid; grid-template-columns: 280px 1fr 300px; gap: 20px; }
+        .container { max-width: 1300px; margin: 25px auto; padding: 0 15px; display: grid; grid-template-columns: 280px 1fr 300px; gap: 20px; }
         @media (max-width: 992px) { .container { grid-template-columns: 1fr; } }
-
-        .box { background: var(--card-bg); border: 1px solid var(--border); padding: 18px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .box { background: var(--card-bg); border: 1px solid var(--border); padding: 18px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); margin-bottom: 20px; }
         .box h3 { margin-top: 0; border-bottom: 2px solid var(--accent); padding-bottom: 8px; font-size: 1.1rem; color: #0f172a; text-transform: uppercase; }
-
-        /* Petrol Rates Styling */
-        .rate-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #e2e8f0; font-size: 0.95rem; }
+        .rate-row { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px dashed #e2e8f0; font-size: 0.95rem; }
         .rate-val { font-weight: bold; color: #b91c1c; }
-
-        /* Highlighted News */
-        .main-headline { font-size: 1.5rem; color: #0f172a; margin-top: 0; margin-bottom: 12px; line-height: 1.3; }
-        .news-img { width: 100%; height: auto; border-radius: 4px; margin-bottom: 15px; }
-        .news-content p { font-size: 1.05rem; line-height: 1.7; color: #334155; }
-
-        /* Sidebar Lists */
+        .main-headline { font-size: 1.6rem; color: #0f172a; margin-top: 0; margin-bottom: 12px; line-height: 1.3; }
+        .main-headline a { color: #0f172a; text-decoration: none; }
+        .main-headline a:hover { color: var(--accent); }
+        .news-img { width: 100%; height: auto; max-height: 400px; object-fit: cover; border-radius: 6px; margin-bottom: 18px; }
+        .news-content p { font-size: 1.05rem; line-height: 1.8; color: #334155; margin-bottom: 15px; }
         .list-item { padding: 10px 0; border-bottom: 1px solid #f1f5f9; font-size: 0.95rem; }
         .list-item a { color: #1e40af; text-decoration: none; font-weight: bold; }
         .list-item a:hover { text-decoration: underline; color: var(--accent); }
-
         footer { text-align: center; padding: 20px; background: var(--header-bg); color: white; margin-top: 40px; font-size: 0.9rem; }
     </style>
 </head>
 <body>
     <header>
         <h1>NEXUS GLOBAL NEWS CHANNEL</h1>
-        <p>Professional Investigative & Real-Time Intelligence Portal</p>
+        <p>Official Authentic Intelligence & Real-Time Live Portal</p>
     </header>
 
     <div class="ticker-bar">
-        <span>🔴 LIVE UPDATES: Global Markets Active</span>
+        <span>🔴 LIVE: Geo & Google Trends Integrated</span>
         <span>Date: 03 November 2026</span>
     </div>
 
     <div class="container">
-        <!-- Left Sidebar: Petrol Prices & Financial Markets -->
+        <!-- Left Sidebar -->
         <div class="sidebar-left">
             <div class="box">
                 <h3>Petrol Price Daily</h3>
-                <div class="rate-row">
-                    <span>Petrol (Pakistan):</span>
-                    <span class="rate-val">Rs. 367.00</span>
-                </div>
-                <div class="rate-row">
-                    <span>High Speed Diesel:</span>
-                    <span class="rate-val">Rs. 358.50</span>
-                </div>
-                <div class="rate-row">
-                    <span>WTI Crude Oil:</span>
-                    <span class="rate-val">$ 97.40</span>
-                </div>
-                <div class="rate-row">
-                    <span>Brent Crude:</span>
-                    <span class="rate-val">$ 101.20</span>
-                </div>
+                <div class="rate-row"><span>Petrol (PKR):</span><span class="rate-val">Rs. 377.71</span></div>
+                <div class="rate-row"><span>High Speed Diesel:</span><span class="rate-val">Rs. 393.66</span></div>
+                <div class="rate-row"><span>WTI Crude Oil:</span><span class="rate-val">$96.42</span></div>
+                <div class="rate-row"><span>Brent Crude:</span><span class="rate-val">$101.20</span></div>
             </div>
 
             <div class="box">
                 <h3>Financial Markets</h3>
-                <div class="rate-row">
-                    <span>PSX KSE-100:</span>
-                    <span class="rate-val">84,550 (+420)</span>
-                </div>
-                <div class="rate-row">
-                    <span>USD to PKR:</span>
-                    <span class="rate-val">Rs. 278.50</span>
-                </div>
-                <div class="rate-row">
-                    <span>Gold (Per Tola):</span>
-                    <span class="rate-val">Rs. 265,000</span>
-                </div>
+                <div class="rate-row"><span>PSX KSE-100:</span><span class="rate-val">168,171.49</span></div>
+                <div class="rate-row"><span>USD to PKR:</span><span class="rate-val">Rs. 277.10</span></div>
+                <div class="rate-row"><span>Gold (Per Tola):</span><span class="rate-val">Rs. 285,000</span></div>
+            </div>
+
+            <div class="box">
+                <h3>Google Trends (PK)</h3>
+                <div class="list-item"><a href="#" target="_blank">🔥 ICC Champions Trophy Schedule & Updates</a></div><div class="list-item"><a href="#" target="_blank">🔥 FBR Tax Filing & Deadline Extensions</a></div>
             </div>
         </div>
 
-        <!-- Center: Top Highlighted News with Picture & Full Content -->
+        <!-- Center Main News -->
         <main class="main-content">
             <div class="box" style="border-left: 5px solid var(--accent);">
                 <h3>Top Highlighted News</h3>
-                <h2 class="main-headline">Global Economic Shifts & International Policy Updates</h2>
-                <img src="https://picsum.photos/1000/600?random=155" alt="News Image" class="news-img">
+                <h2 class="main-headline"><a href="https://www.geo.tv/latest/689484-two-cops-deployed-with-polio-team-martyred-in-kps-mohmand" target="_blank">Two cops martyred, one injured in attack on polio team in KP's Mohmand</a></h2>
+                <img src="https://picsum.photos/900/500?random=50" alt="News Image" class="news-img">
                 <div class="news-content">
-                    <h2>Global Market Dynamics & Policy Shifts</h2>
-        <p>Recent policy announcements by international leaders have triggered significant shifts across global financial and energy markets. Analysts are closely monitoring the outcomes as institutional stakeholders review their strategic portfolios.</p>
-        <h2>Economic Implications & Expert Insights</h2>
-        <p>Verified reports indicate that supply chain adjustments and currency fluctuations are playing a critical role in shaping regional trade tariffs and consumer pricing models.</p>
+                    <h2>News Breakdown</h2><p><img src="https://www.geo.tv/assets/uploads/2026-11-03/689484_115813_updates.jpg"/>
+	            	This representational image shows policemen stand guard as a health worker administers polio drops to a child during a polio vaccination campaign in Karachi. ─ AFP/FileTwo cops martyred, one injured in Mohmand polio team attack.Police launch search for attackers after Mohmand...</p>
                 </div>
             </div>
         </main>
 
-        <!-- Right Sidebar: Sports & Trending Topics -->
+        <!-- Right Sidebar -->
         <div class="sidebar-right">
             <div class="box">
-                <h3>Sports & Top Trends</h3>
-                <div class="list-item">
-                    <a href="#">Pakistan vs Australia ODI Series Live Updates & Squad Analysis</a>
-                </div>
-                <div class="list-item">
-                    <a href="#">ICC Champions Trophy Preparations & Stadium Upgrades</a>
-                </div>
-                <div class="list-item">
-                    <a href="#">Global Tech Trends: AI Automation in 2026</a>
-                </div>
-                <div class="list-item">
-                    <a href="#">Pakhtakor FC vs Al-Nassr Match Standings & Highlights</a>
-                </div>
-                <div class="list-item">
-                    <a href="#">Federal Board of Revenue (FBR) Tax Filing Guidelines</a>
-                </div>
+                <h3>Trending & Sports</h3>
+                <div class="list-item"><a href="#" target="_blank">📈 Global Petroleum & Crude Oil Price Shifts</a></div><div class="list-item"><a href="#" target="_blank">📈 PSX Market Index Performance Analysis</a></div>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 Nexus Global News Channel. Professional Automated Publishing System.</p>
+        <p>&copy; 2026 Nexus Global News Channel. Live RSS & API Integration.</p>
     </footer>
 </body>
 </html>
