@@ -3,113 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS GLOBAL NEWS CHANNEL - Live Portal</title>
+    <title>Nexus Pakistan - Live News & Google Trends</title>
     <style>
-        :root { --bg: #f4f6f9; --header-bg: #0f172a; --card-bg: #ffffff; --border: #cbd5e1; --accent: #dc2626; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: #1e293b; margin: 0; padding: 0; }
-        header { background: var(--header-bg); color: white; padding: 22px 20px; text-align: center; border-bottom: 5px solid var(--accent); }
-        header h1 { margin: 0; font-size: 2.3rem; letter-spacing: 1.5px; text-transform: uppercase; }
-        header p { margin: 5px 0 0; color: #94a3b8; font-size: 0.95rem; }
-        .ticker-bar { background: #1e293b; color: #f8fafc; padding: 10px 20px; font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; font-weight: bold; border-bottom: 1px solid #334155; }
-        .ticker-text { color: #fca5a5; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; max-width: 70%; }
-        .container { max-width: 1300px; margin: 22px auto; padding: 0 15px; display: grid; grid-template-columns: 280px 1fr 310px; gap: 20px; }
-        @media (max-width: 992px) { .container { grid-template-columns: 1fr; } }
-        .box { background: var(--card-bg); border: 1px solid var(--border); padding: 16px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); margin-bottom: 18px; }
-        .box h3 { margin-top: 0; border-bottom: 2px solid var(--accent); padding-bottom: 6px; font-size: 1.05rem; color: #0f172a; text-transform: uppercase; }
-        .rate-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #e2e8f0; font-size: 0.9rem; }
-        .rate-val { font-weight: bold; color: #b91c1c; }
-        .main-headline { font-size: 1.5rem; color: #0f172a; margin-top: 0; margin-bottom: 10px; line-height: 1.3; }
-        .main-headline a { color: #0f172a; text-decoration: none; }
-        .main-headline a:hover { color: var(--accent); }
-        .news-img { width: 100%; height: 350px; object-fit: cover; border-radius: 6px; margin-bottom: 15px; display: block; }
-        .news-content p { font-size: 1rem; line-height: 1.7; color: #334155; margin-bottom: 12px; }
-        .match-box { background: #fff1f2; border: 1px solid #fecdd3; padding: 10px; border-radius: 6px; margin-bottom: 10px; border-left: 4px solid #dc2626; }
-        .badge.red { background: #dc2626; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; }
-        .match-box h4 { margin: 5px 0 3px; font-size: 0.9rem; color: #0f172a; }
-        .match-box .score { font-weight: bold; color: #b91c1c; margin: 2px 0; font-size: 0.85rem; }
-        .schedule-item { padding: 6px 0; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; flex-direction: column; font-size: 0.85rem; }
-        .schedule-item a { color: #1e40af; text-decoration: none; font-weight: bold; }
-        .schedule-item a:hover { text-decoration: underline; }
-        .schedule-item small { color: #64748b; }
-        footer { text-align: center; padding: 18px; background: var(--header-bg); color: white; margin-top: 30px; font-size: 0.9rem; }
+        :root {
+            --bg-main: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #ef4444;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg-main); color: var(--text-main); line-height: 1.5; padding: 20px; }
+
+        .container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 340px; gap: 20px; }
+        
+        /* Header Banner */
+        header { grid-column: 1 / -1; background: var(--card-bg); padding: 20px; border-radius: 12px; border-left: 5px solid var(--accent); display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: 1px; color: var(--text-main); }
+        .logo span { color: var(--accent); }
+        .live-clock { background: #0f172a; padding: 8px 16px; border-radius: 8px; border: 1px solid #0284c7; color: #38bdf8; font-weight: bold; font-size: 1.1rem; }
+
+        /* Widget Box */
+        .widget { background: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 20px; }
+        .widget-title { font-size: 1.1rem; font-weight: 700; border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-bottom: 15px; color: var(--accent); display: flex; justify-content: space-between; align-items: center; }
+        
+        /* Ticker & Financial Bar */
+        .ticker-bar { display: flex; gap: 15px; background: #0f172a; padding: 12px; border-radius: 8px; margin-bottom: 15px; font-size: 0.95rem; border: 1px solid var(--border); }
+        .ticker-item { flex: 1; text-align: center; }
+        .ticker-val { font-weight: bold; color: #4ade80; display: block; font-size: 1.1rem; margin-top: 2px; }
+
+        /* News & Trends Stream */
+        .news-item { padding: 12px 0; border-bottom: 1px dashed var(--border); }
+        .news-item:last-child { border-bottom: none; }
+        .news-title { color: #f8fafc; text-decoration: none; font-weight: 600; display: block; margin-bottom: 4px; transition: color 0.2s; }
+        .news-title:hover { color: var(--accent); }
+        .news-time { font-size: 0.8rem; color: var(--text-muted); }
+
+        /* Status Badge */
+        .status-badge { font-size: 0.75rem; background: #166534; color: #4ade80; padding: 3px 8px; border-radius: 12px; font-weight: 600; }
+
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>NEXUS GLOBAL NEWS CHANNEL</h1>
-        <p>Official Authentic Intelligence & Real-Time Live Portal</p>
-    </header>
-
-    <div class="ticker-bar">
-        <div class="ticker-text">🔴 LIVE NEWS: <a href="https://www.geo.tv/latest/689484-two-cops-deployed-with-polio-team-martyred-in-kps-mohmand" target="_blank" style="color:#fca5a5; text-decoration:none;">Two cops martyred, one injured in attack on polio team in KP's Mohmand</a></div>
-        <div>🕒 03 November 2026 | 04:01 PM</div>
-    </div>
 
     <div class="container">
-        <!-- Left Column: Markets & Economy -->
-        <div class="sidebar-left">
-            <div class="box">
-                <h3>Petrol Price Daily</h3>
-                <div class="rate-row"><span>Petrol (PKR):</span><span class="rate-val">Rs. 377.71</span></div>
-                <div class="rate-row"><span>High Speed Diesel:</span><span class="rate-val">Rs. 393.66</span></div>
-                <div class="rate-row"><span>WTI Crude Oil:</span><span class="rate-val">$96.42</span></div>
-                <div class="rate-row"><span>Brent Crude:</span><span class="rate-val">$101.20</span></div>
-            </div>
+        
+        <!-- Header -->
+        <header>
+            <div class="logo">NEXUS <span>PAKISTAN</span></div>
+            <div class="live-clock">🕒 <span id="clock">--:--:--</span></div>
+        </header>
 
-            <div class="box">
-                <h3>Financial Markets</h3>
-                <div class="rate-row"><span>PSX KSE-100:</span><span class="rate-val">168,171.49</span></div>
-                <div class="rate-row"><span>USD to PKR:</span><span class="rate-val">Rs. 277.10</span></div>
-                <div class="rate-row"><span>Gold (Per Tola):</span><span class="rate-val">Rs. 285,000</span></div>
-                <div class="rate-row" style="border:none; padding-bottom:0;"><span>Status:</span><span style="color:green; font-weight:bold;">Market Active 📈</span></div>
-            </div>
-        </div>
+        <!-- Main Column (Local News Feeds) -->
+        <main>
+            <div class="widget">
+                <div class="widget-title">
+                    <span>📰 Top Headlines & Live News</span>
+                    <span class="status-badge" id="news-status">Local Sync</span>
+                </div>
+                <div id="news-container">
+                    <div style="color: var(--text-muted); text-align: center; padding: 20px;">Loading local news...</div>
+                </div>
 
-        <!-- Center Main News -->
-        <main class="main-content">
-            <div class="box" style="border-left: 5px solid var(--accent);">
-                <h3>Top Highlighted News</h3>
-                <h2 class="main-headline"><a href="https://www.geo.tv/latest/689484-two-cops-deployed-with-polio-team-martyred-in-kps-mohmand" target="_blank">Two cops martyred, one injured in attack on polio team in KP's Mohmand</a></h2>
-                <img src="https://loremflickr.com/900/500/martyred" alt="Two cops martyred, one injured in attack on polio team in KP's Mohmand" class="news-img">
-                <div class="news-content">
-                    <p><strong>Breaking Overview:</strong> This representational image shows policemen stand guard as a health worker administers polio drops to a child during a polio vaccination campaign in Karachi. ─ AFP/FileTwo cops martyred, one injured in Mohmand polio team attack.Police launch search for attackers after Mohmand...</p><p>Official response teams and authorities are actively monitoring developments on ground.</p>
+                <!-- Calculator Website Promotion Button -->
+                <div style="margin-top: 20px; text-align: center;">
+                    <a href="https://calculator.nexusglobalit.org" target="_blank" rel="noopener noreferrer" style="display: block; background: linear-gradient(135deg, #0284c7, #0369a1); color: #fff; padding: 14px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: all 0.2s;">
+                        🧮 Explore Nexus Calculator & Tools (calculator.nexusglobalit.org)
+                    </a>
                 </div>
             </div>
         </main>
 
-        <!-- Right Column: Live Sports & Schedules -->
-        <div class="sidebar-right">
-            <div class="box">
-                <h3>LIVE SPORTS CENTRE</h3>
-                
-    <div class="match-box live">
-        <span class="badge red">🔴 IN PROGRESS</span>
-        <h4>🏏 PAK vs AUS - 2nd ODI (Live)</h4>
-        <p class="score">PAK: 248/4 (43.1 ov) | Target: 290</p>
-    </div>
-    <h4 style="margin-top:12px; margin-bottom:6px; font-size:0.9rem; color:#0f172a;">INTERNATIONAL SCHEDULE</h4>
-    
-        <div class="schedule-item">
-            <a href="https://www.espn.com/soccer/" target="_blank">⚽ Pakhtakor vs Al-Nassr</a>
-            <small>Today, 09:00 PM PKT</small>
-        </div>
-        
-        <div class="schedule-item">
-            <a href="https://www.espncricinfo.com" target="_blank">🏏 Pak vs Aus 3rd ODI</a>
-            <small>Tomorrow, 02:30 PM PKT</small>
-        </div>
-        
-        <div class="schedule-item">
-            <a href="https://tms.fih.ch/" target="_blank">🏑 Asian Hockey Championship</a>
-            <small>Live Scorecard Available</small>
-        </div>
-        
+        <!-- Sidebar (Market & Google Trends Topics) -->
+        <aside>
+            <!-- Financial Rates -->
+            <div class="widget">
+                <div class="widget-title">
+                    <span>💹 Live Rates</span>
+                    <span class="status-badge">API Live</span>
+                </div>
+                <div class="ticker-bar">
+                    <div class="ticker-item">
+                        <span style="color:var(--text-muted);">USD / PKR</span>
+                        <span class="ticker-val" id="usd-pkr">Loading...</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span style="color:var(--text-muted);">EUR / PKR</span>
+                        <span class="ticker-val" id="eur-pkr">Loading...</span>
+                    </div>
+                </div>
             </div>
-        </div>
+
+            <!-- Clean Google Trends Topics Widget -->
+            <div class="widget">
+                <div class="widget-title">
+                    <span>🔥 Top 10 Google Trends</span>
+                </div>
+                <div id="trends-container">
+                    <div style="color: var(--text-muted); text-align: center; padding: 10px;">Loading Trends...</div>
+                </div>
+            </div>
+        </aside>
+
     </div>
 
-    <footer>
-        <p>&copy; 2026 Nexus Global News Channel. Automated Real-Time Pipeline.</p>
-    </footer>
+    <script>
+        // 1. Live Clock
+        function startClock() {
+            const clockElem = document.getElementById('clock');
+            setInterval(() => {
+                const now = new Date();
+                clockElem.innerText = now.toLocaleTimeString('en-US', { hour12: true });
+            }, 1000);
+        }
+
+        // 2. Fetch Live Currency Rates
+        async function fetchCurrency() {
+            try {
+                const res = await fetch('https://open.er-api.com/v6/latest/USD');
+                const data = await res.json();
+                if (data && data.rates) {
+                    const pkr = data.rates.PKR.toFixed(2);
+                    const eurToPkr = (data.rates.PKR / data.rates.EUR).toFixed(2);
+                    document.getElementById('usd-pkr').innerText = "Rs " + pkr;
+                    document.getElementById('eur-pkr').innerText = "Rs " + eurToPkr;
+                }
+            } catch (err) {
+                document.getElementById('usd-pkr').innerText = "Offline";
+            }
+        }
+
+        // 3. Fetch Local News Feed from Python-generated JSON file
+        async function fetchNews() {
+            const newsContainer = document.getElementById('news-container');
+            const newsStatus = document.getElementById('news-status');
+            const jsonUrl = 'latest_news.json?v=' + new Date().getTime(); // Prevent caching
+            
+            try {
+                const res = await fetch(jsonUrl);
+                if (!res.ok) throw new Error("Local news file not found");
+                
+                const items = await res.json();
+                
+                if (items && items.length > 0) {
+                    newsContainer.innerHTML = '';
+                    items.slice(0, 6).forEach(item => {
+                        let displayTime = "Recent Update";
+                        if (item.pubDate) {
+                            const parsedDate = new Date(item.pubDate);
+                            if (!isNaN(parsedDate.getTime())) {
+                                displayTime = parsedDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                            }
+                        }
+                        
+                        const html = `
+                            <div class="news-item">
+                                <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="news-title">${item.title}</a>
+                                <span class="news-time">🕒 ${displayTime} | Source: Live Feed</span>
+                            </div>
+                        `;
+                        newsContainer.innerHTML += html;
+                    });
+                    newsStatus.innerText = "Synced Local";
+                    newsStatus.style.background = "#166534";
+                } else {
+                    throw new Error("Empty news items");
+                }
+            } catch (err) {
+                console.warn("News Read Notice:", err);
+                newsStatus.innerText = "File Missing";
+                newsStatus.style.background = "#991b1b";
+                
+                newsContainer.innerHTML = `
+                    <div class="news-item" style="border-left: 3px solid #ef4444; padding-left: 10px;">
+                        <span class="news-title" style="color: #ef4444;">⚠️ latest_news.json file nahi mili</span>
+                        <span class="news-time">Baraye meharbani apni Python script dobara chalayein taake news file generate ho sake.</span>
+                    </div>
+                `;
+            }
+        }
+
+        // 4. Read & Parse Google Trends CSV File cleanly (Top 10 Trends with Links)
+        async function loadGoogleTrendsCSV() {
+            const container = document.getElementById('trends-container');
+            const csvUrl = 'Google trends Daily/latest_trends.csv?v=' + new Date().getTime(); // Prevent caching
+            
+            try {
+                const response = await fetch(csvUrl);
+                if(!response.ok) throw new Error("CSV file not found");
+                
+                const csvText = await response.text();
+                const lines = csvText.split('\n').filter(line => line.trim() !== '');
+                
+                container.innerHTML = '';
+                let count = 0;
+                
+                for (let i = 1; i < lines.length && count < 10; i++) {
+                    const line = lines[i].trim();
+                    if (!line) continue;
+                    
+                    const columns = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                    const topic = columns[0] ? columns[0].replace(/^"|"$/g, '').trim() : '';
+                    let link = columns[1] ? columns[1].replace(/^"|"$/g, '').trim() : '';
+                    
+                    if (!link || !link.startsWith('http')) {
+                        link = `https://www.google.com/search?q=${encodeURIComponent(topic)}`;
+                    }
+
+                    if (topic) {
+                        count++;
+                        const html = `
+                            <div class="news-item">
+                                <strong style="color: var(--accent);">#${count}</strong> 
+                                <a href="${link}" target="_blank" rel="noopener noreferrer" class="news-title" style="display:inline; margin-left:8px;">${topic}</a>
+                            </div>
+                        `;
+                        container.innerHTML += html;
+                    }
+                }
+
+                if (count === 0) {
+                    throw new Error("No valid trends found in CSV");
+                }
+            } catch (err) {
+                console.warn("CSV Read Notice (Fallback Active):", err);
+                container.innerHTML = `
+                    <div class="news-item"><strong style="color: var(--accent);">#1</strong> <a href="https://www.google.com/search?q=pakistan+stock+exchange" target="_blank" class="news-title" style="display:inline; margin-left:8px;">pakistan stock exchange</a></div>
+                `;
+            }
+        }
+
+        // Initialize Engine
+        startClock();
+        fetchCurrency();
+        fetchNews();
+        loadGoogleTrendsCSV();
+
+        // Auto Refresh
+        setInterval(fetchCurrency, 60000);        // 1 Minute
+        setInterval(fetchNews, 60000);            // 1 Minute (Local JSON sync)
+        setInterval(loadGoogleTrendsCSV, 300000);  // 5 Minutes
+    </script>
+
 </body>
 </html>
