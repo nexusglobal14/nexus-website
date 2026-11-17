@@ -1,93 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pakistan News Headlines, Google Trends & USD to PKR Rate Today | Nexus Pakistan</title>
-<meta name="description" content="Daily Pakistan dashboard: latest Urdu news headlines from BBC Urdu, today&#x27;s top Google Trends in Pakistan and live USD and EUR to PKR rates.">
-<link rel="canonical" href="https://web.nexusglobalit.org/">
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta property="og:type" content="website"><meta property="og:site_name" content="Nexus Pakistan"><meta property="og:title" content="Pakistan News Headlines, Google Trends &amp; USD to PKR Rate Today"><meta property="og:description" content="Daily Pakistan dashboard: latest Urdu news headlines from BBC Urdu, today&#x27;s top Google Trends in Pakistan and live USD and EUR to PKR rates."><meta property="og:url" content="https://web.nexusglobalit.org/"><meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="/style.css">
-<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebSite", "name": "Nexus Pakistan", "url": "https://web.nexusglobalit.org/", "publisher": {"@type": "Organization", "name": "Nexus Global Information Technology", "url": "https://www.nexusglobalit.org/"}}, {"@context": "https://schema.org", "@type": "ItemList", "name": "Top Google Trends in Pakistan", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "weather", "url": "https://trends.google.com/trends/explore?q=weather&geo=PK&hl=en-US"}, {"@type": "ListItem", "position": 2, "name": "pakistan vs sri lanka", "url": "https://trends.google.com/trends/explore?q=pakistan%20vs%20sri%20lanka&geo=PK&hl=en-US"}, {"@type": "ListItem", "position": 3, "name": "pak vs ban u19", "url": "https://trends.google.com/trends/explore?q=pak%20vs%20ban%20u19&geo=PK&hl=en-US"}, {"@type": "ListItem", "position": 4, "name": "veena malik", "url": "https://trends.google.com/trends/explore?q=veena%20malik&geo=PK&hl=en-US"}, {"@type": "ListItem", "position": 5, "name": "samsung galaxy s27 ultra", "url": "https://trends.google.com/trends/explore?q=samsung%20galaxy%20s27%20ultra&geo=PK&hl=en-US"}, {"@type": "ListItem", "position": 6, "name": "pubg mobile 4.7 update", "url": "https://trends.google.com/trends/explore?q=pubg%20mobile%204.7%20update&geo=PK&hl=en-US"}, {"@type": "ListItem", "position": 7, "name": "weather today", "url": "https://trends.google.com/trends/explore?q=weather%20today&geo=PK&hl=en-US"}, {"@type": "ListItem", "position": 8, "name": "weather tomorrow", "url": "https://trends.google.com/trends/explore?q=weather%20tomorrow&geo=PK&hl=en-US"}, {"@type": "ListItem", "position": 9, "name": "saudi arabia", "url": "https://trends.google.com/trends/explore?q=saudi%20arabia&geo=PK&hl=en-US"}, {"@type": "ListItem", "position": 10, "name": "under 19 asia cup", "url": "https://trends.google.com/trends/explore?q=under%2019%20asia%20cup&geo=PK&hl=en-US"}]}]</script>
+    <link rel="canonical" href="https://web.nexusglobalit.org/" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Pakistan - Live News & Google Trends</title>
+    <style>
+        :root {
+            --bg-main: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #ef4444;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg-main); color: var(--text-main); line-height: 1.5; padding: 20px; }
+
+        .container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 340px; gap: 20px; }
+        
+        /* Header Banner */
+        header { grid-column: 1 / -1; background: var(--card-bg); padding: 20px; border-radius: 12px; border-left: 5px solid var(--accent); display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: 1px; color: var(--text-main); }
+        .logo span { color: var(--accent); }
+        .live-clock { background: #0f172a; padding: 8px 16px; border-radius: 8px; border: 1px solid #0284c7; color: #38bdf8; font-weight: bold; font-size: 1.1rem; }
+
+        /* Widget Box */
+        .widget { background: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 20px; }
+        .widget-title { font-size: 1.1rem; font-weight: 700; border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-bottom: 15px; color: var(--accent); display: flex; justify-content: space-between; align-items: center; }
+        
+        /* Ticker & Financial Bar */
+        .ticker-bar { display: flex; gap: 15px; background: #0f172a; padding: 12px; border-radius: 8px; margin-bottom: 15px; font-size: 0.95rem; border: 1px solid var(--border); }
+        .ticker-item { flex: 1; text-align: center; }
+        .ticker-val { font-weight: bold; color: #4ade80; display: block; font-size: 1.1rem; margin-top: 2px; }
+
+        /* News & Trends Stream */
+        .news-item { padding: 12px 0; border-bottom: 1px dashed var(--border); }
+        .news-item:last-child { border-bottom: none; }
+        .news-title { color: #f8fafc; text-decoration: none; font-weight: 600; display: block; margin-bottom: 4px; transition: color 0.2s; }
+        .news-title:hover { color: var(--accent); }
+        .news-time { font-size: 0.8rem; color: var(--text-muted); }
+
+        /* Status Badge */
+        .status-badge { font-size: 0.75rem; background: #166534; color: #4ade80; padding: 3px 8px; border-radius: 12px; font-weight: 600; }
+
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-<header class="site"><a class="logo" href="/">NEXUS <span>PAKISTAN</span></a>
-<nav aria-label="Main"><a href="/">Home</a><a href="/about/">About</a><a href="https://calc.nexusglobalit.org/">Calculators</a><a href="https://tools.nexusglobalit.org/">Tools</a><a href="/contact/">Contact</a></nav></header>
-<section class="intro"><h1>Pakistan Today: News Headlines, Google Trends and PKR Rates</h1>
-<p>Latest Urdu headlines, what Pakistan is searching for on Google right now, and live exchange rates, all in one place. Last updated: <time datetime="2026-11-16T01:11:19.500712+05:00">16 November 2026, 01:11 AM PKT</time>.</p></section>
-<main>
-<div class="widget"><h2><span>Top Headlines</span><span class="status-badge" id="news-status">Updated 16 Nov</span></h2>
-<div id="news-container">
-<div class="news-item"><a href="https://www.bbc.com/urdu/articles/cmvg2x36w7nwo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer" class="news-title" lang="ur" dir="rtl">’ایپسٹین نے 200 سے زیادہ مرتبہ میرا ریپ کیا‘: متاثرہ خواتین کے بیانات جو ماڈلنگ ایجنسی کا مبینہ کردار واضح کرتے ہیں</a><span class="news-time">12 Nov 2026, 09:20 AM PKT &middot; Source: BBC Urdu</span></div>
-<div class="news-item"><a href="https://www.bbc.com/urdu/articles/c94gnvprmkxeo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer" class="news-title" lang="ur" dir="rtl">کوہاٹ پولیس پر حملے میں 10 اہلکار ہلاک: ’حیدر زمان سپاہی کے طور پر بھرتی ہو کر ڈی ایس پی کے عہدے تک پہنچے تھے‘</a><span class="news-time">12 Nov 2026, 08:44 AM PKT &middot; Source: BBC Urdu</span></div>
-<div class="news-item"><a href="https://www.bbc.com/urdu/articles/cklye922z0ejo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer" class="news-title" lang="ur" dir="rtl">’سرجن خدا نہیں ہوتا‘: کراچی سے برطانیہ پہنچنے والے ڈاکٹر آصف حسن کی کہانی جنھوں نے چار ہزار آپریشن کیے</a><span class="news-time">12 Nov 2026, 08:01 AM PKT &middot; Source: BBC Urdu</span></div>
-<div class="news-item"><a href="https://www.bbc.com/urdu/articles/cwm2jnkplyp4o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer" class="news-title" lang="ur" dir="rtl">نیویارک میں سکھ رہنما کے قتل کی مبینہ سازش: امریکی عدالت نے اجیت ڈوول اور را کے سابق سربراہ کو سمن بھیجنے کی منظوری دے دی</a><span class="news-time">11 Nov 2026, 08:03 PM PKT &middot; Source: BBC Urdu</span></div>
-<div class="news-item"><a href="https://www.bbc.com/urdu/articles/cjr4g0w0x4z4o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer" class="news-title" lang="ur" dir="rtl">گلوان جھڑپوں سے متاثر سلمان خان کی ’ماتربھومی‘ کا ٹریلر کیوں موضوعِ بحث ہے؟</a><span class="news-time">11 Nov 2026, 05:39 PM PKT &middot; Source: BBC Urdu</span></div>
-<div class="news-item"><a href="https://www.bbc.com/urdu/articles/cwp9dr14ej5lo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer" class="news-title" lang="ur" dir="rtl">عمران خان کی آنکھ میں بار بار انجیکشن کیوں لگایا جا رہا ہے اور سینٹرل ریٹینل وین آکلوژن نامی بیماری کیا ہے؟</a><span class="news-time">11 Nov 2026, 04:18 PM PKT &middot; Source: BBC Urdu</span></div>
-<div class="news-item"><a href="https://www.bbc.com/urdu/articles/cq9vzvvr3w74o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer" class="news-title" lang="ur" dir="rtl">منشیات فروش گینگ جو مہنگی گاڑیوں اور اپارٹمنٹس کا لالچ دے کر بچوں کو کرائے کے قاتل بنا رہے ہیں</a><span class="news-time">11 Nov 2026, 03:33 PM PKT &middot; Source: BBC Urdu</span></div>
-<div class="news-item"><a href="https://www.bbc.com/urdu/articles/ck7825wqqjw3o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer" class="news-title" lang="ur" dir="rtl">اسلام قبول کرنے والی خاتون کو نکاح کے پانچ دن بعد طلاق: ’فریبی شوہر نے یقین دلایا اسے مجھ سے محبت ہے‘</a><span class="news-time">11 Nov 2026, 12:56 PM PKT &middot; Source: BBC Urdu</span></div>
-<div class="news-item"><a href="https://www.bbc.com/urdu/articles/cmgrvzx905wro?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer" class="news-title" lang="ur" dir="rtl">ایپ ڈاؤن لوڈ کریں</a><span class="news-time">04 Nov 2026, 08:59 AM PKT &middot; Source: BBC Urdu</span></div>
-<div class="news-item"><a href="https://www.bbc.co.uk/urdu/live/crq5vd2npv92t?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer" class="news-title" lang="ur" dir="rtl">سعودی عرب کا دو بیلسٹک میزائل اور دو ڈرون مار گرانے کا دعویٰ، عدن میں اتحادی افواج کے ٹھکانوں پر حملے</a><span class="news-time">Recent update &middot; Source: BBC Urdu</span></div>
-</div>
-<a class="cta" href="https://calc.nexusglobalit.org/">Free calculators: mortgage, SIP, BMI, age and more</a>
-</div>
-</main>
-<aside>
-<div class="widget"><h2><span>Live Rates</span><span class="status-badge">API</span></h2>
-<div class="ticker-bar"><div class="ticker-item">USD / PKR<span class="ticker-val" id="usd-pkr">Loading...</span></div><div class="ticker-item">EUR / PKR<span class="ticker-val" id="eur-pkr">Loading...</span></div></div>
-<p class="news-time" style="margin-top:8px">Rates load live in your browser from open.er-api.com. They are indicative mid-market rates and may differ from bank or open-market rates.</p></div>
-<div class="widget"><h2><span>Top 10 Google Trends in Pakistan</span></h2>
-<div id="trends-container">
-<div class="news-item"><span class="rank">#1</span><a href="https://trends.google.com/trends/explore?q=weather&amp;geo=PK&amp;hl=en-US" target="_blank" rel="noopener noreferrer" class="trend-link">weather</a> <span class="news-time">(200K+ searches)</span></div>
-<div class="news-item"><span class="rank">#2</span><a href="https://trends.google.com/trends/explore?q=pakistan%20vs%20sri%20lanka&amp;geo=PK&amp;hl=en-US" target="_blank" rel="noopener noreferrer" class="trend-link">pakistan vs sri lanka</a> <span class="news-time">(50K+ searches)</span></div>
-<div class="news-item"><span class="rank">#3</span><a href="https://trends.google.com/trends/explore?q=pak%20vs%20ban%20u19&amp;geo=PK&amp;hl=en-US" target="_blank" rel="noopener noreferrer" class="trend-link">pak vs ban u19</a> <span class="news-time">(5K+ searches)</span></div>
-<div class="news-item"><span class="rank">#4</span><a href="https://trends.google.com/trends/explore?q=veena%20malik&amp;geo=PK&amp;hl=en-US" target="_blank" rel="noopener noreferrer" class="trend-link">veena malik</a> <span class="news-time">(2K+ searches)</span></div>
-<div class="news-item"><span class="rank">#5</span><a href="https://trends.google.com/trends/explore?q=samsung%20galaxy%20s27%20ultra&amp;geo=PK&amp;hl=en-US" target="_blank" rel="noopener noreferrer" class="trend-link">samsung galaxy s27 ultra</a> <span class="news-time">(2K+ searches)</span></div>
-<div class="news-item"><span class="rank">#6</span><a href="https://trends.google.com/trends/explore?q=pubg%20mobile%204.7%20update&amp;geo=PK&amp;hl=en-US" target="_blank" rel="noopener noreferrer" class="trend-link">pubg mobile 4.7 update</a> <span class="news-time">(2K+ searches)</span></div>
-<div class="news-item"><span class="rank">#7</span><a href="https://trends.google.com/trends/explore?q=weather%20today&amp;geo=PK&amp;hl=en-US" target="_blank" rel="noopener noreferrer" class="trend-link">weather today</a> <span class="news-time">(5K+ searches)</span></div>
-<div class="news-item"><span class="rank">#8</span><a href="https://trends.google.com/trends/explore?q=weather%20tomorrow&amp;geo=PK&amp;hl=en-US" target="_blank" rel="noopener noreferrer" class="trend-link">weather tomorrow</a> <span class="news-time">(200K+ searches)</span></div>
-<div class="news-item"><span class="rank">#9</span><a href="https://trends.google.com/trends/explore?q=saudi%20arabia&amp;geo=PK&amp;hl=en-US" target="_blank" rel="noopener noreferrer" class="trend-link">saudi arabia</a> <span class="news-time">(1K+ searches)</span></div>
-<div class="news-item"><span class="rank">#10</span><a href="https://trends.google.com/trends/explore?q=under%2019%20asia%20cup&amp;geo=PK&amp;hl=en-US" target="_blank" rel="noopener noreferrer" class="trend-link">under 19 asia cup</a> <span class="news-time">(1K+ searches)</span></div>
-</div></div>
-</aside>
-<section class="about" id="about">
-<h2>About this page</h2>
-<p>Nexus Pakistan is a simple daily dashboard that brings together three things people in Pakistan check often: the latest news headlines, the topics trending on Google Search in Pakistan, and the US dollar and euro exchange rates against the Pakistani rupee.</p>
-<h2>Where the information comes from</h2>
-<ul><li><strong>Headlines</strong> come from the public RSS feed of BBC Urdu. We show the headline and link to the original article, which opens on the BBC website. We do not copy article text.</li>
-<li><strong>Trends</strong> are the daily trending searches for Pakistan from Google Trends. Each item links to its Google Trends page. Search volume is shown as Google reports it, for example 50K+.</li>
-<li><strong>Exchange rates</strong> are fetched live in your browser from the open.er-api.com service.</li></ul>
-<h2>How often it updates</h2>
-<p>Headlines and trends are refreshed regularly and the page is rebuilt each time. The time of the last update is shown at the top of the page. Exchange rates refresh every minute while the page is open.</p>
-<h2>Limits and disclaimer</h2>
-<p>Headlines are the work of their original publishers and Nexus Pakistan is not responsible for their content. Trending topics only show what people are searching for, not whether something is true. Exchange rates are indicative and should not be used for financial decisions without checking with your bank or exchange company.</p>
-<p>See also our free <a href="https://calc.nexusglobalit.org/">online calculators</a> and <a href="https://tools.nexusglobalit.org/">browser tools</a>.</p>
-</section>
-<footer class="site"><a href="/">Home</a><a href="/about/">About</a><a href="/privacy-policy/">Privacy Policy</a><a href="/contact/">Contact</a><a href="https://www.nexusglobalit.org/">Nexus Global</a>
-<p style="margin-top:8px">&copy; 2026 Nexus Global Information Technology</p></footer>
-</div>
-<noscript><p style="text-align:center;color:#94a3b8;margin-top:10px">Live exchange rates need JavaScript. Headlines and trends above were saved at the last update.</p></noscript>
-<script>
-(function(){
-function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!==undefined)e.textContent=x;return e;}
-function safe(u){return /^https?:\/\//i.test(u);}
-function hasUrdu(s){return /[\u0600-\u06FF]/.test(s);}
-var clock=document.getElementById('clock');
-async function rates(){try{var r=await fetch('https://open.er-api.com/v6/latest/USD');var d=await r.json();
-if(d&&d.rates&&d.rates.PKR){document.getElementById('usd-pkr').textContent='Rs '+d.rates.PKR.toFixed(2);
-document.getElementById('eur-pkr').textContent='Rs '+(d.rates.PKR/d.rates.EUR).toFixed(2);}}catch(e){document.getElementById('usd-pkr').textContent='Unavailable';document.getElementById('eur-pkr').textContent='Unavailable';}}
-async function news(){try{var r=await fetch('/latest_news.json?v='+Date.now());if(!r.ok)return;var items=await r.json();if(!items||!items.length)return;
-items.sort(function(a,b){return (Date.parse(b.pubDate)||0)-(Date.parse(a.pubDate)||0);});
-var box=document.getElementById('news-container');var frag=document.createDocumentFragment();
-items.slice(0,10).forEach(function(it){if(!it.title||!safe(it.link||''))return;var d=el('div','news-item');var a=el('a','news-title',it.title);a.href=it.link;a.target='_blank';a.rel='noopener noreferrer';
-if(hasUrdu(it.title)){a.lang='ur';a.dir='rtl';}var t=Date.parse(it.pubDate);
-d.appendChild(a);d.appendChild(el('span','news-time',(t?new Date(t).toLocaleString([], {dateStyle:'medium',timeStyle:'short'}):'Recent update')+' \u00b7 Source: BBC Urdu'));frag.appendChild(d);});
-if(frag.childNodes.length){box.textContent='';box.appendChild(frag);}}catch(e){}}
-rates();news();setInterval(rates,60000);setInterval(news,300000);
-})();
-</script>
+
+    <div class="container">
+        
+        <!-- Header -->
+        <header>
+            <div class="logo">NEXUS <span>PAKISTAN</span></div>
+            <div class="live-clock">🕒 <span id="clock">--:--:--</span></div>
+        </header>
+
+        <!-- Main Column (Local News Feeds) -->
+        <main>
+            <div class="widget">
+                <div class="widget-title">
+                    <span>📰 Top Headlines & Live News</span>
+                    <span class="status-badge" id="news-status">Local Sync</span>
+                </div>
+                <div id="news-container">
+                    <div style="color: var(--text-muted); text-align: center; padding: 20px;">Loading local news...</div>
+                </div>
+
+                <!-- Calculator Website Promotion Button -->
+                <div style="margin-top: 20px; text-align: center;">
+                    <a href="https://calculator.nexusglobalit.org" target="_blank" rel="noopener noreferrer" style="display: block; background: linear-gradient(135deg, #0284c7, #0369a1); color: #fff; padding: 14px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: all 0.2s;">
+                        🧮 Explore Nexus Calculator & Tools (calculator.nexusglobalit.org)
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Sidebar (Market & Google Trends Topics) -->
+        <aside>
+            <!-- Financial Rates -->
+            <div class="widget">
+                <div class="widget-title">
+                    <span>💹 Live Rates</span>
+                    <span class="status-badge">API Live</span>
+                </div>
+                <div class="ticker-bar">
+                    <div class="ticker-item">
+                        <span style="color:var(--text-muted);">USD / PKR</span>
+                        <span class="ticker-val" id="usd-pkr">Loading...</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span style="color:var(--text-muted);">EUR / PKR</span>
+                        <span class="ticker-val" id="eur-pkr">Loading...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clean Google Trends Topics Widget -->
+            <div class="widget">
+                <div class="widget-title">
+                    <span>🔥 Top 10 Google Trends</span>
+                </div>
+                <div id="trends-container">
+                    <div style="color: var(--text-muted); text-align: center; padding: 10px;">Loading Trends...</div>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <script>
+        // 1. Live Clock
+        function startClock() {
+            const clockElem = document.getElementById('clock');
+            setInterval(() => {
+                const now = new Date();
+                clockElem.innerText = now.toLocaleTimeString('en-US', { hour12: true });
+            }, 1000);
+        }
+
+        // 2. Fetch Live Currency Rates
+        async function fetchCurrency() {
+            try {
+                const res = await fetch('https://open.er-api.com/v6/latest/USD');
+                const data = await res.json();
+                if (data && data.rates) {
+                    const pkr = data.rates.PKR.toFixed(2);
+                    const eurToPkr = (data.rates.PKR / data.rates.EUR).toFixed(2);
+                    document.getElementById('usd-pkr').innerText = "Rs " + pkr;
+                    document.getElementById('eur-pkr').innerText = "Rs " + eurToPkr;
+                }
+            } catch (err) {
+                document.getElementById('usd-pkr').innerText = "Offline";
+            }
+        }
+
+        // 3. Fetch Local News Feed from Python-generated JSON file
+        async function fetchNews() {
+            const newsContainer = document.getElementById('news-container');
+            const newsStatus = document.getElementById('news-status');
+            const jsonUrl = 'latest_news.json?v=' + new Date().getTime(); // Prevent caching
+            
+            try {
+                const res = await fetch(jsonUrl);
+                if (!res.ok) throw new Error("Local news file not found");
+                
+                const items = await res.json();
+                
+                if (items && items.length > 0) {
+                    newsContainer.innerHTML = '';
+                    items.slice(0, 6).forEach(item => {
+                        let displayTime = "Recent Update";
+                        if (item.pubDate) {
+                            const parsedDate = new Date(item.pubDate);
+                            if (!isNaN(parsedDate.getTime())) {
+                                displayTime = parsedDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                            }
+                        }
+                        
+                        const html = `
+                            <div class="news-item">
+                                <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="news-title">${item.title}</a>
+                                <span class="news-time">🕒 ${displayTime} | Source: Live Feed</span>
+                            </div>
+                        `;
+                        newsContainer.innerHTML += html;
+                    });
+                    newsStatus.innerText = "Synced Local";
+                    newsStatus.style.background = "#166534";
+                } else {
+                    throw new Error("Empty news items");
+                }
+            } catch (err) {
+                console.warn("News Read Notice:", err);
+                newsStatus.innerText = "File Missing";
+                newsStatus.style.background = "#991b1b";
+                
+                newsContainer.innerHTML = `
+                    <div class="news-item" style="border-left: 3px solid #ef4444; padding-left: 10px;">
+                        <span class="news-title" style="color: #ef4444;">⚠️ latest_news.json file nahi mili</span>
+                        <span class="news-time">Baraye meharbani apni Python script dobara chalayein taake news file generate ho sake.</span>
+                    </div>
+                `;
+            }
+        }
+
+        // 4. Read & Parse Google Trends CSV File cleanly (Top 10 Trends with Links)
+        async function loadGoogleTrendsCSV() {
+            const container = document.getElementById('trends-container');
+            const csvUrl = 'Google trends Daily/latest_trends.csv?v=' + new Date().getTime(); // Prevent caching
+            
+            try {
+                const response = await fetch(csvUrl);
+                if(!response.ok) throw new Error("CSV file not found");
+                
+                const csvText = await response.text();
+                const lines = csvText.split('\n').filter(line => line.trim() !== '');
+                
+                container.innerHTML = '';
+                let count = 0;
+                
+                for (let i = 1; i < lines.length && count < 10; i++) {
+                    const line = lines[i].trim();
+                    if (!line) continue;
+                    
+                    const columns = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                    const topic = columns[0] ? columns[0].replace(/^"|"$/g, '').trim() : '';
+                    let link = columns[1] ? columns[1].replace(/^"|"$/g, '').trim() : '';
+                    
+                    if (!link || !link.startsWith('http')) {
+                        link = `https://www.google.com/search?q=${encodeURIComponent(topic)}`;
+                    }
+
+                    if (topic) {
+                        count++;
+                        const html = `
+                            <div class="news-item">
+                                <strong style="color: var(--accent);">#${count}</strong> 
+                                <a href="${link}" target="_blank" rel="noopener noreferrer" class="news-title" style="display:inline; margin-left:8px;">${topic}</a>
+                            </div>
+                        `;
+                        container.innerHTML += html;
+                    }
+                }
+
+                if (count === 0) {
+                    throw new Error("No valid trends found in CSV");
+                }
+            } catch (err) {
+                console.warn("CSV Read Notice (Fallback Active):", err);
+                container.innerHTML = `
+                    <div class="news-item"><strong style="color: var(--accent);">#1</strong> <a href="https://www.google.com/search?q=pakistan+stock+exchange" target="_blank" class="news-title" style="display:inline; margin-left:8px;">pakistan stock exchange</a></div>
+                `;
+            }
+        }
+
+        // Initialize Engine
+        startClock();
+        fetchCurrency();
+        fetchNews();
+        loadGoogleTrendsCSV();
+
+        // Auto Refresh
+        setInterval(fetchCurrency, 60000);        // 1 Minute
+        setInterval(fetchNews, 60000);            // 1 Minute (Local JSON sync)
+        setInterval(loadGoogleTrendsCSV, 300000);  // 5 Minutes
+    </script>
+
 </body>
 </html>
